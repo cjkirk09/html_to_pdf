@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link href="/static/css/portal/hipaa/report.css" rel="stylesheet" type="text/css">
+        <script>
+        function subst() {
+            var vars={};
+            // Values seem to be passed in as a url
+            // so page=5&topage=7
+            var x = document.location.search.substring(1).split('&');
+            for (var i = 0; i < x.length; i++) {
+                var z = x[i].split('=',2);
+                vars[z[0]] = unescape(z[1]);
+            }
+            // Replace the content of each element classed with one of these classes
+            var w = ['frompage','topage','page','webpage','section','subsection','subsubsection'];
+            for (var k = 0; k < w.length; k++) {
+                var y = document.getElementsByClassName(w[k]);
+                for (var j = 0; j < y.length; ++j) {
+                    y[j].textContent = parseInt(vars[w[k]]);
+                }
+            }
+        }
+        </script>
+    </head>
+    <body class="no-margin-no-padding" onload="subst()">
+        <br/>
+        <div class="report-footer">
+            <div class="report-footer-page-number">
+                <span class="page"></span>
+                <span class="report-footer-text"> &copy; [- year -] made using WkHtmlToPdf</span>
+            </div>
+            <img src="/static/img/sm_logo.svg" height="30px;" class="report-footer-img">
+        </div>
+    </body>
+</html>
