@@ -26,14 +26,14 @@ def populated_with_js():
 def wkhtml_pdf(path=None):
     if path:
         validatePath(path)
-        return wkhtmlGeneratePdf()
+        return wkhtmlGeneratePdf(path)
 
 
 @app.route('/phantom/<path>')
 def phantom_pdf(path=None):
     if path:
         validatePath(path)
-        return phantomGeneratePdf()
+        return phantomGeneratePdf(path)
 
 
 def validatePath(path):
