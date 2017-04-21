@@ -23,7 +23,7 @@ if __name__ == '__main__':
     cmd = ""
     if args.develop:
         cmd += "export FLASK_DEBUG=1 && "
-    cmd += "export FLASK_APP='main.py' && python -m flask run -p 9876"
+    cmd += "export FLASK_APP='main.py' && python -m flask run -p 5000 -h 0.0.0.0 --with-threads"
     p = subprocess.call(cmd, shell=True)
     subprocess.call("unset FLASK_APP && unset FLASK_DEBUG", shell=True)
     print "Server has stopped"

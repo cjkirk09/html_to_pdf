@@ -22,19 +22,22 @@ def populated_with_js():
     return render_template('populated_with_js.html')
 
 
-@app.route('/wkhtml/<path>')
+@app.route('/wk/<path>')
+@app.route('/wk/<path>/')
 def wkhtml_pdf(path=None):
     if path:
-        validatePath(path)
+        path = validatePath(path)
         return wkhtmlGeneratePdf(path)
 
 
-@app.route('/phantom/<path>')
+@app.route('/ph/<path>')
+@app.route('/ph/<path>/')
 def phantom_pdf(path=None):
     if path:
-        validatePath(path)
+        path = validatePath(path)
         return phantomGeneratePdf(path)
 
 
 def validatePath(path):
-    pass
+    path = path.rstrip('/')
+    return path

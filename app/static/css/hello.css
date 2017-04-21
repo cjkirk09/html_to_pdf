@@ -1,0 +1,13 @@
+@media print{
+    .hello-container {
+        width: 100%;
+        text-align: center;
+        color: red;
+    }
+}
+@media screen{
+    .hello-container {
+        width: 100%;
+        text-align: right;
+    }
+}

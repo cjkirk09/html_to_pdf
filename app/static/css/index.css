@@ -1,0 +1,8 @@
+.left-menu {
+    background: lightblue;
+    float: left;
+}
+.main-content {
+    background: lightgray;
+    width: 100%;
+}

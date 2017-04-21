@@ -137,14 +137,11 @@ def generatePdf(path):
     footer = render_template('default_footer.html')
     header = render_template('default_header.html')
     stream = html_to_pdf(html, footer=footer, header=header, margins=('1in', '0in', '1in', '0in'),
-                         static_url="http://localhost:9876/", paper_size="letter")
+                         static_url="http://localhost:5000", paper_size="letter")
 
     # read to the end to get the size
     stream.seek(0, 2)
     filesize = stream.tell()
+    # get back to the start of the file to read it out
     stream.seek(0)
-    # web.header('Content-Length', filesize)
-    # web.header('Content-Type', 'application/pdf')
-    # web.header('Content-Disposition', 'attachment; filename={0}'.format(path + '.pdf'))
-    # return stream.read()
     return send_file(stream, 'application/pdf', True, '{0}.pdf'.format(path))

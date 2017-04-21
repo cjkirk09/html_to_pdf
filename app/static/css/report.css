@@ -1,0 +1,50 @@
+@media print {
+
+    .page-break-before {
+        page-break-before: always;
+    }
+    .report-footer {
+        font-family: "Helvetica Neue Light", Helvetica, sans-serif;
+        font-size: 11px;
+        color: #9E9E9E;
+        height: 70px;
+    }
+    .report-footer-page-number {
+        padding: 25px;
+        float: left;
+        width: 50%;
+    }
+    .report-footer-img {
+        float: right;
+        padding-right: 15px;
+    }
+    .report-footer-text {
+        padding-left: 5px;
+    }
+    .report-header {
+        padding-top: 40px;
+    }
+    .coverpage {
+        position: relative;
+        width: 8.5in;
+        height: 956px;
+        margin:0;
+        padding: 0;
+        padding-top: 100px;
+        font-size: 14px;
+        font-family: "Helvetica Neue Light", Helvetica, sans-serif;
+    }
+    .indent-left {
+        padding-left: 45px;
+    }
+    .indent-right {
+        padding-right: 45px;
+    }
+    .blue {
+        color: #2196F3;
+    }
+    .no-margin-no-padding {
+        margin: 0;
+        padding: 0;
+    }
+}
