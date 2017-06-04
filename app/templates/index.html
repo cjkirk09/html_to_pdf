@@ -7,27 +7,34 @@
 
 <body>
     <nav>
-        <h1>
-            Welcome to the Main Page
-        </h1>
+        <div>
+            <span class="heading">
+                Welcome to the Main Page
+            </span>
+            <span class="nav-button right">
+                Login
+            </span>
+        </div>
+
+
     </nav>
     <div>
         <div class="left-menu">
             <h2>Menu</h2>
-            <ul>
-                <li><a href="index">Main</a></li>
-                <li><a href="populated_with_js">Populated With JS</a></li>
-                <li><a href="hello">Hello</a></li>
-                <li><a href="demo">Demo Page</a></li>
-                <li><a href="about">About</a></li>
-                <li><a href="contact">Contact</a></li>
-                <li><a href="features">Features</a></li>
-                <li><a href="docs">Documentation</a></li>
-
-            </ul>
+            <hr>
+            <div>
+                <div class="menu-item" onclick="window.location.href='/'">Main</div>
+                <div class="menu-item" onclick="window.location.href='/populated_with_js'">Populated With JS</div>
+                <div class="menu-item" onclick="window.location.href='/hello'">Hello</div>
+                <div class="menu-item" onclick="window.location.href='/demo'">Demo Page</div>
+                <div class="menu-item" onclick="window.location.href='/about'">About</div>
+                <div class="menu-item" onclick="window.location.href='/contact'">Contact</div>
+                <div class="menu-item" onclick="window.location.href='/features'">Features</div>
+                <div class="menu-item" onclick="window.location.href='/docs'">Documentation</div>
+            </div>
         </div>
         <div class="main-content">
-
+            The main content
         </div>
     </div>
 </body>

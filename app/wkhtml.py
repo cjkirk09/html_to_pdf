@@ -59,8 +59,9 @@ def sub_refs(html, static_url=None, link_url=None):
     return html
 
 
-def html_to_pdf(body, coverpage=None, header=None, footer=None, static_url=None, link_url=None,
-                title=None, paper_size=None, orientation=None, margins=None, print_media=True):
+def html_to_pdf(body, url=None, coverpage=None, header=None, footer=None, static_url=None, link_url=None,
+                paper_size=None, orientation=None, margins=None, print_media=True,
+                no_smart_shrinking=False):
     """
     Generates a pdf file from HTML.  Returns a handle to a NamedTemporaryFile
     containing the PDF data.
@@ -111,13 +112,19 @@ def html_to_pdf(body, coverpage=None, header=None, footer=None, static_url=None,
         args.extend(['cover', coverpage_file.name])
 
     if print_media:
-        args.extend(['--print-media-type'])
+        args.append('--print-media-type')
 
-    body = body.encode('utf-8', 'ignore')  # remove unicode characters
-    body_file = tempfile.NamedTemporaryFile('w', prefix='htmlbody', suffix='.html')
-    body_file.write(sub_refs(body, static_url, link_url))
-    body_file.flush()
-    args.append(body_file.name)
+    if no_smart_shrinking:
+        args.append('--disable-smart-shrinking')
+
+    if body:
+        body = body.encode('utf-8', 'ignore')  # remove unicode characters
+        body_file = tempfile.NamedTemporaryFile('w', prefix='htmlbody', suffix='.html')
+        body_file.write(sub_refs(body, static_url, link_url))
+        body_file.flush()
+        args.append(body_file.name)
+    else:
+        args.append(url)
 
     ofile = tempfile.NamedTemporaryFile('w+b', prefix='pdfoutput', suffix='.pdf')
     args.append(ofile.name)
@@ -132,16 +139,17 @@ def html_to_pdf(body, coverpage=None, header=None, footer=None, static_url=None,
     return ofile
 
 
-def generatePdf(path):
-    html = render_template(path + '.html')
+def generatePdf(path, no_smart_shrinking=False):
+    # html = render_template(path)
     footer = render_template('default_footer.html')
     header = render_template('default_header.html')
-    stream = html_to_pdf(html, footer=footer, header=header, margins=('1in', '0in', '1in', '0in'),
-                         static_url="http://localhost:5000", paper_size="letter")
+    stream = html_to_pdf(None, url='http://localhost:5000/' + path, footer=footer, header=header,
+                         margins=('1in', '0.5in', '1in', '0.5in'), static_url="http://localhost:5000",
+                         paper_size="letter", no_smart_shrinking=no_smart_shrinking)
 
     # read to the end to get the size
     stream.seek(0, 2)
     filesize = stream.tell()
     # get back to the start of the file to read it out
     stream.seek(0)
-    return send_file(stream, 'application/pdf', True, '{0}.pdf'.format(path))
+    return send_file(stream, 'application/pdf', True, '{0}.pdf'.format(path or 'index'))

@@ -22,9 +22,26 @@ orientation = system.args[3];
 
 // Setup renderer options
 page.paperSize = {
-  format: 'A4',
-  orientation: orientation,
-  border: '1cm'
+    format: 'Letter',
+    orientation: orientation,
+    margin: {
+        top: '1cm',
+        left: '1cm',
+        right: '1cm',
+        bottom: '1cm'
+    },
+    header: {
+        height: "1cm",
+        contents: phantom.callback(function(pageNum, numPages) {
+            return "<div>Header <span style='float:right'>" + pageNum + " / " + numPages + "</span></div>";
+        })
+    },
+    footer: {
+        height: "1cm",
+        contents: phantom.callback(function(pageNum, numPages) {
+        return "<h1>Footer <span style='float:right'>" + pageNum + " / " + numPages + "</span></h1>";
+        })
+    }
 };
 
 

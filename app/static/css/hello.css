@@ -1,8 +1,14 @@
 @media print{
+    body {
+        font-family: "Helvetica Neue Light", Helvetica, sans-serif;
+    }
     .hello-container {
         width: 100%;
         text-align: center;
         color: red;
+    }
+    p {
+        font-size: 12px;
     }
 }
 @media screen{

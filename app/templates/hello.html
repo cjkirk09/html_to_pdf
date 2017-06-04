@@ -2,18 +2,50 @@
 <html>
 <head>
     <link href="/static/css/hello.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/index.css" rel="stylesheet" type="text/css">
     <title>Hello</title>
 </head>
 
 <body>
-    <div class="hello-container">
-        <h1>
-            Hello
-            {% if name %}
-                {{ name }}
-            {% endif %}
-        </h1>
-    <p>Other stuff</p>
+    <nav>
+        <div>
+            <span class="heading">
+                Welcome to the Hello Page
+            </span>
+            <span class="nav-button right">
+                Login
+            </span>
+        </div>
+
+
+    </nav>
+    <div>
+        <div class="left-menu">
+            <h2>Menu</h2>
+            <hr>
+            <div>
+                <div class="menu-item" onclick="window.location.href='/'">Main</div>
+                <div class="menu-item" onclick="window.location.href='/populated_with_js'">Populated With JS</div>
+                <div class="menu-item" onclick="window.location.href='/hello'">Hello</div>
+                <div class="menu-item" onclick="window.location.href='/demo'">Demo Page</div>
+                <div class="menu-item" onclick="window.location.href='/about'">About</div>
+                <div class="menu-item" onclick="window.location.href='/contact'">Contact</div>
+                <div class="menu-item" onclick="window.location.href='/features'">Features</div>
+                <div class="menu-item" onclick="window.location.href='/docs'">Documentation</div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="hello-container">
+                <div class="heading">
+                    Hello
+                    {% if name %}
+                        {{ name }}
+                    {% endif %}
+                </div>
+                <p>Other stuff</p>
+            </div>
+        </div>
     </div>
+
 </body>
 </html>

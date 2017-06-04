@@ -1,8 +1,54 @@
+body {
+    margin: 0;
+}
 .left-menu {
     background: lightblue;
     float: left;
+    width: 200px;
+    height: 100vh;
+}
+.menu-item {
+    height: 30px;
+    width: calc(100% - 10px);
+    border-bottom: 1px solid grey;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.menu-item:hover {
+    background: aliceblue;
+    cursor: pointer;
 }
 .main-content {
-    background: lightgray;
-    width: 100%;
+    background: whitesmoke;
+    padding: 20px;
+    min-height: 100vh;
+    margin-left: 200px;  /* to avoid the menu */
+}
+nav {
+    height: 60px;
+    background: blue;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+}
+.heading {
+    font-size: 30px;
+    font-weight: 600;
+}
+.right {
+    float: right;
+}
+.nav-button {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+@media print {
+    nav, .left-menu {
+        display: none;
+    }
+    .main-content {
+        margin-left: 0;
+        background: white;
+    }
 }
