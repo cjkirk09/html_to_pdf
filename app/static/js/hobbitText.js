@@ -8,7 +8,6 @@ function getText() {
             text = data;
             data = data.replace(/\n/g, '<br/>');
             textafter = data;
-            console.log(data);
             window.document.getElementById('hobbit-text').innerHTML = data;
         }
     };

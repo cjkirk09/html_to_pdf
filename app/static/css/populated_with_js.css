@@ -1,4 +1,5 @@
 .book-heading {
+    position: relative;
     display: -webkit-box; /* wkhtmltopdf uses this one.*/
     /*It turns out that it has trouble with "display: flex" with the current wkhtmltopdf version (0.12.4 (with patched qt)
     because QT under the hood is an older version that doesn't support all of the newer display types like flex */
@@ -7,4 +8,7 @@
 }
 .hobbit-img {
     width: 110px;
+}
+.hobbit-img-container {
+    margin-left: calc(50% - 180px);
 }

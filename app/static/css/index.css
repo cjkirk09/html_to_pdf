@@ -43,12 +43,30 @@ nav {
     margin-top: 10px;
     margin-right: 10px;
 }
+.country-table {
+    border: solid black 1px;
+    border-collapse: collapse;
+    width: 100%;
+}
+.country-table td, .country-table th {
+    border: solid black 1px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+
 @media print {
     nav, .left-menu {
         display: none;
     }
     .main-content {
-        margin-left: 0;
+        margin-left: 0;  /* the menu isn't there, so make it flush to the side */
         background: white;
+    }
+    .page-break-avoid {
+        page-break-inside: avoid;
+    }
+    .page-break-before {
+        page-break-before: always;
     }
 }

@@ -34,7 +34,250 @@
             </div>
         </div>
         <div class="main-content">
-            The main content
+            <p>Turning tables that are really long or that have rows that are really long can be hard.</p>
+            <p>And some things you just can't do all that well because there are known issues with the technologies.
+            <p>Like repeating the headers of the table on subsequent pages.</p>
+            <p>If you have a <b>page-break-inside: avoid</b> on the <b>&lt;tr&gt;</b>, then the repeating header will work just fine with wkhtmltopdf.</p>
+            <div>
+                <table class="country-table">
+                    <thead>
+                        <tr>
+                            <th>Letter</th>
+                            <th>Countries that start with that letter (According to https://www.state.gov/misc/list/)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="page-break-avoid">
+                            <td>A</td>
+                            <td>
+                                <div>
+                                    Afghanistan<br/>
+                                    Albania<br/>
+                                    Algeria<br/>
+                                    Andorra<br/>
+                                    Angola<br/>
+                                    Antigua and Barbuda<br/>
+                                    Argentina<br/>
+                                    Armenia<br/>
+                                    Aruba<br/>
+                                    Australia<br/>
+                                    Austria<br/>
+                                    Azerbaijan<br/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="page-break-avoid">
+                            <td>B</td>
+                            <td>
+                                <div>
+                                    Bahamas, The<br/>
+                                    Bahrain<br/>
+                                    Bangladesh<br/>
+                                    Barbados<br/>
+                                    Belarus<br/>
+                                    Belgium<br/>
+                                    Belize<br/>
+                                    Benin<br/>
+                                    Bhutan<br/>
+                                    Bolivia<br/>
+                                    Bosnia and Herzegovina<br/>
+                                    Botswana<br/>
+                                    Brazil<br/>
+                                    Brunei<br/>
+                                    Bulgaria<br/>
+                                    Burkina Faso<br/>
+                                    Burma<br/>
+                                    Burundi<br/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="page-break-avoid">
+                            <td>C</td>
+                            <td>
+                                <div>
+                                    Cambodia<br/>
+                                    Cameroon<br/>
+                                    Canada<br/>
+                                    Cabo Verde<br/>
+                                    Central African Republic<br/>
+                                    Chad<br/>
+                                    Chile<br/>
+                                    China<br/>
+                                    Colombia<br/>
+                                    Comoros<br/>
+                                    Congo, Democratic Republic of the<br/>
+                                    Congo, Republic of the<br/>
+                                    Costa Rica<br/>
+                                    Cote d'Ivoire<br/>
+                                    Croatia<br/>
+                                    Cuba<br/>
+                                    Curacao<br/>
+                                    Cyprus<br/>
+                                    Czechia<br/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="page-break-avoid">
+                            <td>D</td>
+                            <td>
+                                <div>
+                                    Denmark<br/>
+                                    Djibouti<br/>
+                                    Dominica<br/>
+                                    Dominican Republic<br/>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>WkHtmlToPdf is significantly better at handling tables that go over a page break</p>
+            <p>But if you do not tell it to avoid splitting a row across pages, then the header will repeat but it will be placed over top of the content of the row and will be illegible. This is a known bug and does not yet have a good fix.</p>
+            <table class="country-table">
+                    <thead>
+                        <tr>
+                            <th>Letter</th>
+                            <th>Countries that start with that letter (According to https://www.state.gov/misc/list/)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>
+                                <div>
+                                    Afghanistan<br/>
+                                    Albania<br/>
+                                    Algeria<br/>
+                                    Andorra<br/>
+                                    Angola<br/>
+                                    Antigua and Barbuda<br/>
+                                    Argentina<br/>
+                                    Armenia<br/>
+                                    Aruba<br/>
+                                    Australia<br/>
+                                    Austria<br/>
+                                    Azerbaijan<br/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>
+                                <div>
+                                    Bahamas, The<br/>
+                                    Bahrain<br/>
+                                    Bangladesh<br/>
+                                    Barbados<br/>
+                                    Belarus<br/>
+                                    Belgium<br/>
+                                    Belize<br/>
+                                    Benin<br/>
+                                    Bhutan<br/>
+                                    Bolivia<br/>
+                                    Bosnia and Herzegovina<br/>
+                                    Botswana<br/>
+                                    Brazil<br/>
+                                    Brunei<br/>
+                                    Bulgaria<br/>
+                                    Burkina Faso<br/>
+                                    Burma<br/>
+                                    Burundi<br/>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            <p>The way to avoid that is to construct the table such that it does not have a &lt;thead&gt; section and instead include the &lt;tr&gt; as part of the body. This will cause it to not try to repeat the thead on each page of the table. </p>
+            <table class="country-table">
+                    <tbody>
+                        <tr>
+                            <th>Letter</th>
+                            <th>Countries that start with that letter (According to https://www.state.gov/misc/list/)</th>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td>
+                                <div>
+                                    Afghanistan<br/>
+                                    Albania<br/>
+                                    Algeria<br/>
+                                    Andorra<br/>
+                                    Angola<br/>
+                                    Antigua and Barbuda<br/>
+                                    Argentina<br/>
+                                    Armenia<br/>
+                                    Aruba<br/>
+                                    Australia<br/>
+                                    Austria<br/>
+                                    Azerbaijan<br/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>
+                                <div>
+                                    Bahamas, The<br/>
+                                    Bahrain<br/>
+                                    Bangladesh<br/>
+                                    Barbados<br/>
+                                    Belarus<br/>
+                                    Belgium<br/>
+                                    Belize<br/>
+                                    Benin<br/>
+                                    Bhutan<br/>
+                                    Bolivia<br/>
+                                    Bosnia and Herzegovina<br/>
+                                    Botswana<br/>
+                                    Brazil<br/>
+                                    Brunei<br/>
+                                    Bulgaria<br/>
+                                    Burkina Faso<br/>
+                                    Burma<br/>
+                                    Burundi<br/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>
+                                <div>
+                                    Cambodia<br/>
+                                    Cameroon<br/>
+                                    Canada<br/>
+                                    Cabo Verde<br/>
+                                    Central African Republic<br/>
+                                    Chad<br/>
+                                    Chile<br/>
+                                    China<br/>
+                                    Colombia<br/>
+                                    Comoros<br/>
+                                    Congo, Democratic Republic of the<br/>
+                                    Congo, Republic of the<br/>
+                                    Costa Rica<br/>
+                                    Cote d'Ivoire<br/>
+                                    Croatia<br/>
+                                    Cuba<br/>
+                                    Curacao<br/>
+                                    Cyprus<br/>
+                                    Czechia<br/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>D</td>
+                            <td>
+                                <div>
+                                    Denmark<br/>
+                                    Djibouti<br/>
+                                    Dominica<br/>
+                                    Dominican Republic<br/>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
         </div>
     </div>
 </body>
