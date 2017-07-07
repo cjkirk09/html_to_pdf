@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+}
+.left-menu {
+    background: lightblue;
+    float: left;
+    width: 200px;
+    height: 100vh;
+}
+.menu-item {
+    height: 30px;
+    width: calc(100% - 10px);
+    border-bottom: 1px solid grey;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.menu-item:hover {
+    background: aliceblue;
+    cursor: pointer;
+}
+.main-content {
+    background: whitesmoke;
+    padding: 20px;
+    min-height: 100vh;
+    margin-left: 200px;  /* to avoid the menu */
+}
+nav {
+    height: 60px;
+    background: blue;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+}
+.heading {
+    font-size: 30px;
+    font-weight: 600;
+}
+.right {
+    float: right;
+}
+.nav-button {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.flex {
+    display: -webkit-box; /* wkhtmltopdf uses this one.*/
+    /*It turns out that it has trouble with "display: flex" with the current wkhtmltopdf version (0.12.4 (with patched qt)
+    because QT under the hood is an older version that doesn't support all of the newer display types like flex */
+    display: -webkit-flex;
+    display: flex;
+}
+.sidebar {
+    border: 2px solid darkgray;
+    border-radius: 4px;
+    width: 600px;
+    padding: 20px;
+    margin: 5px;
+}
+.quote {
+    border-radius: 4px;
+    background: lightslategray;
+    margin-left: 10px;
+    margin-right: 20px;
+    padding: 10px;
+}
+.center {
+    text-align: center;
+}
+.video-link {
+    display: none;
+}
+
+@media print {
+    nav, .left-menu {
+        display: none;
+    }
+    .main-content {
+        margin-left: 0;  /* the menu isn't there, so make it flush to the side */
+        background: transparent;
+        font-size: larger;
+        font-family: "Helvetica Neue Light", Helvetica, sans-serif;
+    }
+
+    img {
+        max-width: 500px;
+    }
+    iframe {
+        display: none
+    }
+    .video-link {
+        display: block;
+    }
+
+    .quote {
+        background: transparent;
+    }
+
+    a {
+        word-wrap: break-word;
+        color: black;
+    }
+    a:after {
+        content: " (" attr(href) ")";
+        font-size: 80%;
+        text-decoration: none;
+    }
+
+    .flex {
+        display: block;
+    }
+    .sidebar {
+        page-break-before: always;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+
+    }
+}

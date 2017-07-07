@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="/static/css/includes_coverpage.css" rel="stylesheet" type="text/css">
     <link href="/static/css/index.css" rel="stylesheet" type="text/css">
-    <link href="/static/css/populated_with_js.css" rel="stylesheet" type="text/css">
-    <script type="application/javascript" src="/static/js/hobbitText.js"></script>
-    <title>Populated With JS</title>
+    <title>Contact</title>
 </head>
 
 <body>
     <nav>
         <div>
             <span class="heading">
-                Welcome to the Populated By JS Page
+                Welcome to the Contact Page
             </span>
             <span class="nav-button right">
                 Login
@@ -34,18 +33,16 @@
             </div>
         </div>
         <div class="main-content">
-            <div class="book-heading">
-                <div>
-                    <h2>The Hobbit</h2>
-                    <h4>By JRR Tolkien</h4>
-                    <h3>Chapter 1</h3>
-                </div>
-                <div class="hobbit-img-container">
-                    <img class="hobbit-img" src="/static/img/hobbit-cover.jpg">
-                </div>
-            </div>
-            <div id="hobbit-text"></div>
+            <p>One area where there is a clear winner is in adding coverpages to the generated pdf.</p>
+            <p>
+                It is possible that PhantomJS has this ability, but I have not discovered it yet. So if it does have it,
+                then it is not very well documented or used.
+            </p>
+            <br/>
+            <p>But it comes built into the documentation of WkHtmlToPdf and is easy to use.</p>
+            <p>I made it so that if you add <b>?cp=t</b> to your url when request that WkHtmlToPdf turn it into pdf, it will add a coverpage.</p>
         </div>
     </div>
+
 </body>
 </html>

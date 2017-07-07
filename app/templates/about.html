@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="/static/css/about-screen.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="/static/css/about-print.css" rel="stylesheet" type="text/css" media="print">
     <link href="/static/css/index.css" rel="stylesheet" type="text/css">
-    <link href="/static/css/populated_with_js.css" rel="stylesheet" type="text/css">
-    <script type="application/javascript" src="/static/js/hobbitText.js"></script>
-    <title>Populated With JS</title>
+    <title>About</title>
 </head>
 
 <body>
     <nav>
         <div>
             <span class="heading">
-                Welcome to the Populated By JS Page
+                Welcome to the About Page
             </span>
             <span class="nav-button right">
                 Login
             </span>
         </div>
-
-
     </nav>
     <div>
         <div class="left-menu">
@@ -34,18 +32,18 @@
             </div>
         </div>
         <div class="main-content">
-            <div class="book-heading">
-                <div>
-                    <h2>The Hobbit</h2>
-                    <h4>By JRR Tolkien</h4>
-                    <h3>Chapter 1</h3>
-                </div>
-                <div class="hobbit-img-container">
-                    <img class="hobbit-img" src="/static/img/hobbit-cover.jpg">
-                </div>
+            <h3>This page demonstrates the different types of link tags you can define.</h3>
+            <p>Typically a css link tag looks like this:</p>
+            <p><strong>&lt;link href="/some/path/to/file.css" rel="stylesheet" type="text/css"&gt;</strong></p>
+            <p>But there is another parameter you can define in the link tag. <b>media</b></p>
+            <div class="screen-only">
+                If you define <strong>media="screen"</strong>, then the page will use the css defined in that file for screen viewing only (even if you have defined some @media print css in the file).
             </div>
-            <div id="hobbit-text"></div>
+            <div class="print-only">
+                But if you define <strong>media="print"</strong>, then the page will use the css defined in that file for print viewing (even if you have defined some @media screen css in the file).
+            </div>
         </div>
     </div>
+
 </body>
 </html>

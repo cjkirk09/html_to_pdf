@@ -110,9 +110,11 @@ def html_to_pdf(body, url=None, coverpage=None, header=None, footer=None, static
         coverpage_file.write(sub_refs(coverpage, static_url, link_url))
         coverpage_file.flush()
         args.extend(['cover', coverpage_file.name])
-
-    if print_media:
-        args.append('--print-media-type')
+        if print_media:
+            args.append('--print-media-type')
+            # this parameter needs to be here if you want the coverpage to use print media
+            # because this parameter will only apply to this coverpage. It's inclusion further down
+            # applies to the main page and headers and footers
 
     if no_smart_shrinking:
         args.append('--disable-smart-shrinking')
@@ -125,6 +127,9 @@ def html_to_pdf(body, url=None, coverpage=None, header=None, footer=None, static
         args.append(body_file.name)
     else:
         args.append(url)
+
+    if print_media:
+        args.append('--print-media-type')
 
     ofile = tempfile.NamedTemporaryFile('w+b', prefix='pdfoutput', suffix='.pdf')
     args.append(ofile.name)
@@ -139,11 +144,14 @@ def html_to_pdf(body, url=None, coverpage=None, header=None, footer=None, static
     return ofile
 
 
-def generatePdf(path, no_smart_shrinking=False):
+def generatePdf(path, no_smart_shrinking=False, coverpage=False):
     # html = render_template(path)
     footer = render_template('default_footer.html')
     header = render_template('default_header.html')
-    stream = html_to_pdf(None, url='http://localhost:5000/' + path, footer=footer, header=header,
+    coverpage_html = None
+    if coverpage:
+        coverpage_html = render_template('default_coverpage.html')
+    stream = html_to_pdf(None, url='http://localhost:5000/' + path, coverpage=coverpage_html, footer=footer, header=header,
                          margins=('1in', '0.5in', '1in', '0.5in'), static_url="http://localhost:5000",
                          paper_size="letter", no_smart_shrinking=no_smart_shrinking)
 

@@ -11,11 +11,25 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/about', methods=['GET'])
+def about():
+    return render_template('about.html')
+
+
+@app.route('/includes_coverpage', methods=['GET'])
+def contact():
+    return render_template('includes_coverpage.html')
+
+
+@app.route('/demo', methods=['GET'])
+def docs():
+    return render_template('demo.html')
+
+
 @app.route('/hello', methods=['GET'])
 @app.route('/hello/', methods=['GET'])
-@app.route('/hello/<name>', methods=['GET'])
 def hello_world(name=None):
-    return render_template('hello.html', name=name)
+    return render_template('hello.html')
 
 
 @app.route('/populated_with_js/', methods=['GET'])
@@ -34,7 +48,8 @@ def get_hobbit_text():
 def wkhtml_pdf(path=''):
     path = validatePath(path)
     no_smart_shrinking = request.args.get('nss', '') == 't'
-    return wkhtmlGeneratePdf(path, no_smart_shrinking=no_smart_shrinking)
+    coverpage = request.args.get('cp', '') == 't'
+    return wkhtmlGeneratePdf(path, no_smart_shrinking=no_smart_shrinking, coverpage=coverpage)
 
 
 @app.route('/ph/')  # index page
