@@ -137,7 +137,6 @@ def html_to_pdf(body, url=None, coverpage=None, header=None, footer=None, static
     # all command line args have been generated in this file and are safe except
     # for wkhtml_bin... which we'll assume is safe.
     cmd = ' '.join(args)
-    print cmd
     status, output = commands.getstatusoutput(cmd)
     if status:
         raise Exception('Error generating PDF: %s' % output)
