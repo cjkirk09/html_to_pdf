@@ -33,13 +33,13 @@ page.paperSize = {
     header: {
         height: "1cm",
         contents: phantom.callback(function(pageNum, numPages) {
-            return "<div>Header <span style='float:right'>" + pageNum + " / " + numPages + "</span></div>";
+            return "<div><span style='float:right; font-size: 10px;'>Page " + pageNum + " of " + numPages + "</span></div>";
         })
     },
     footer: {
         height: "1cm",
         contents: phantom.callback(function(pageNum, numPages) {
-        return "<h1>Footer <span style='float:right'>" + pageNum + " / " + numPages + "</span></h1>";
+        return "<div style='font-size: 10px;'><span style='color: gray;'>" + pageNum + " &copy; Made using PhantomJS</span><span style='float:right'>Sadly, No Image</span></div>";
         })
     }
 };
