@@ -72,49 +72,48 @@ nav {
 }
 
 @media print {
-    nav, .left-menu {
-        display: none;
-    }
-    .main-content {
-        margin-left: 0;  /* the menu isn't there, so make it flush to the side */
-        background: transparent;
-        font-size: larger;
-        font-family: "Helvetica Neue Light", Helvetica, sans-serif;
-    }
+    /*nav, .left-menu {*/
+        /*display: none;*/
+    /*}*/
+    /*.main-content {*/
+        /*margin-left: 0;  !* the menu isn't there, so make it flush to the side *!*/
+        /*background: transparent;*/
+        /*font-size: larger;*/
+        /*font-family: "Helvetica Neue Light", Helvetica, sans-serif;*/
+    /*}*/
 
-    img {
-        max-width: 500px;
-    }
-    iframe {
-        display: none
-    }
-    .video-link {
-        display: block;
-    }
+    /*img {*/
+        /*max-width: 500px;*/
+    /*}*/
+    /*iframe {*/
+        /*display: none*/
+    /*}*/
+    /*.video-link {*/
+        /*display: block;*/
+    /*}*/
 
-    .quote {
-        background: transparent;
-    }
+    /*.quote {*/
+        /*background: transparent;*/
+    /*}*/
 
-    a {
-        word-wrap: break-word;
-        color: black;
-    }
-    a:after {
-        content: " (" attr(href) ")";
-        font-size: 80%;
-        text-decoration: none;
-    }
+    /*a {*/
+        /*word-wrap: break-word;*/
+        /*color: black;*/
+    /*}*/
+    /*a:after {*/
+        /*content: " (" attr(href) ")";*/
+        /*font-size: 80%;*/
+        /*text-decoration: none;*/
+    /*}*/
 
-    .flex {
-        display: block;
-    }
-    .sidebar {
-        page-break-before: always;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        text-align: center;
-
-    }
+    /*.flex {*/
+        /*display: block;*/
+    /*}*/
+    /*.sidebar {*/
+        /*page-break-before: always;*/
+        /*width: 100%;*/
+        /*padding: 0;*/
+        /*margin: 0;*/
+        /*text-align: center;*/
+    /*}*/
 }

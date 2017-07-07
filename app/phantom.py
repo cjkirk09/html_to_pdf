@@ -1,16 +1,9 @@
-import json
-import re
 import subprocess
-import urllib
-
 from tempfile import NamedTemporaryFile
 from flask import send_file
 
 
-
-
-
-def html_to_pdf(homepath, path, read=True, password=None, customer=None, landscape='f'):
+def html_to_pdf(homepath, path, landscape='f'):
     """
     I make a request to C{url} and return the contents as a PDF.
 
