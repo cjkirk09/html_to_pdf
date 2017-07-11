@@ -2,11 +2,11 @@ This is a Dockerized server for testing the capabilities of PhantomJS and wkhtml
 
 Uses:
 
-wkhtmltopdf (version 0.12.4 with patched qt)
+wkhtmltopdf (version 0.12.4 with patched qt) https://wkhtmltopdf.org/index.html
 
-phantomjs (version 2.1.1)
+phantomjs (version 2.1.1) http://phantomjs.org/
 
-Flask (version 0.12.1)
+Flask (version 0.12.1) http://flask.pocoo.org/docs/0.12/
 
 python (version 2.7)
 
