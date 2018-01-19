@@ -148,11 +148,15 @@ def generatePdf(path, no_smart_shrinking=False, coverpage=False):
     footer = render_template('default_footer.html')
     header = render_template('default_header.html')
     coverpage_html = None
-    if coverpage:
-        coverpage_html = render_template('default_coverpage.html')
-    stream = html_to_pdf(None, url='http://localhost:5000/' + path, coverpage=coverpage_html, footer=footer, header=header,
-                         margins=('1in', '0.5in', '1in', '0.5in'), static_url="http://localhost:5000",
-                         paper_size="letter", no_smart_shrinking=no_smart_shrinking)
+    # if coverpage:
+    #     coverpage_html = render_template('default_coverpage.html')
+    # stream = html_to_pdf(None, url='http://localhost:5000/' + path, coverpage=coverpage_html, footer=footer, header=header,
+    #                      margins=('1in', '0.5in', '1in', '0.5in'), static_url="http://localhost:5000",
+    #                      paper_size="letter", no_smart_shrinking=no_smart_shrinking)
+    ofile = tempfile.NamedTemporaryFile('w+b', prefix='pdfoutput', suffix='.pdf')
+    status, output = commands.getstatusoutput('google-chrome-stable --headless --disable-gpu --print-to-pdf={0} http://localhost:5000/{1}'.format(ofile.name, path))
+    print output
+    stream = ofile
 
     # read to the end to get the size
     stream.seek(0, 2)
